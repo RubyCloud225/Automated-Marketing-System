@@ -1,36 +1,10 @@
 from flask import Flask, jsonify, request
-from sqlalchemy import Boolean, create_engine, Column, Integer, String, Text
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 import requests
 from bs4 import BeautifulSoup
+from models import Url, Article
 
 #Initialize Flask app
 app = Flask(__name__)
-
-# SQLAlchemy setup for SQL server
-DATABASE_URL = 'mysql+pymysql://username:password@localhost/db_name'
-engine = create_engine(DATABASE_URL)
-Session = sessionmaker(bind=engine)
-Base = declarative_base()
-
-# Define Url model for URL's table
-class Url(Base):
-    __tablename__ = 'urls'
-    id = Column(Integer, primary_key=True)
-    url = Column(String(100), nullable=False)
-    processed = Column(Boolean, default=False)
-
-# Define Article Model
-class Article(Base):
-    __tablename__ = 'articles'
-    id = Column(Integer, primary_key=True)
-    title = Column(String(100), nullable=False)
-    content = Column(Text, nullable=False)
-    url = Column(Text, nullable=False)
-
-# Create tables
-Base.metadata.create_all(engine)
 
 # UrlManager class to manage URLs
 class UrlManager:
