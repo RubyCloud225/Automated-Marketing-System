@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from sqlalchemy.exc import IntegrityError
-from models import Newsletter
-import NewsletterGenerator
+from automarket.models import Newsletter
+import automarket.newsletter_creation.NewsletterGenerator as NewsletterGenerator
 
 app = Flask(__name__)
 

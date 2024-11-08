@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import requests
 from bs4 import BeautifulSoup
-from models import Url, Article
+from automarket.models import Url, Article
 
 #Initialize Flask app
 app = Flask(__name__)

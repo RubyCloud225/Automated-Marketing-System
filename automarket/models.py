@@ -1,5 +1,6 @@
+from datetime import datetime
 from flask import Flask, jsonify, request
-from sqlalchemy import Boolean, create_engine, Column, Integer, String, Text
+from sqlalchemy import Boolean, create_engine, Column, Integer, String, Text, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -35,6 +36,17 @@ class Newsletter(Base):
 
     def __repr__(self):
         return f"<Newsletter(id=self.id), status='{self.status}'>"
+
+# Define the Email subscribers model
+class EmailSubscribers(Base):
+    __tablename__ = 'EmailSubscribers'
+    SubscriberID = Column(Integer, primary_key=True, autoincrement=True)
+    Email = Column(String(255), nullable=False, unique=True)
+    FirstName = Column(String(100), nullable=True)
+    LastName = Column(String(100), nullable=True)
+    SubscriberDate = Column(DateTime, default=datetime.datetime.utcnow)
+    IsActive = Column(Boolean, default=True)
+    OptOutDate = Column(DateTime, nullable=True)
 
 # Create tables
 Base.metadata.create_all(engine)
