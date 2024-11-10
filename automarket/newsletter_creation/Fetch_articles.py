@@ -1,7 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, session
 import requests
 from bs4 import BeautifulSoup
-from automarket.models import Url, Article
+from automarket.data.models import Url, Article
 
 #Initialize Flask app
 app = Flask(__name__)
@@ -36,7 +36,7 @@ class UrlManager:
 # ArticleFetcher class to fetch, parse and save articles
 class ArticleFetcher:
     def __init__(self):
-        self.session = Session()
+        self.session = session()
         self.url_manager = UrlManager()
 
     def fetch_and_save_article(self):

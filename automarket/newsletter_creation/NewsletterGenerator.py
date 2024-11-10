@@ -2,7 +2,7 @@ import openai
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from automarket.newsletter_creation.Fetch_articles import Article
-from automarket.models import Newsletter
+from automarket.data.models import Newsletter
 
 openai.api_key = 'your_openai_api_key'
 

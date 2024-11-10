@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 from sqlalchemy import create_engine, Column, Integer, String, Text, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from models import EmailSubscribers, Newsletter
+from automarket.data.models import EmailSubscribers, Newsletter
 
 Base = declarative_base()
 

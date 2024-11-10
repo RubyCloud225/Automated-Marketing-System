@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, sessionmaker
-from models import Member
+from automarket.data.models import Member
 
 class LoginManager:
     def __init__(self, connection_string):

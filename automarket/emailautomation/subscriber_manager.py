@@ -1,4 +1,4 @@
-from models import EmailSubscribers
+from automarket.data.models import EmailSubscribers
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
